@@ -38,5 +38,9 @@ x('https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_populatio
   }]
 )
   .then(res => {
-    fs.writeFileSync('./test.json', JSON.stringify(res))
+    const now = new Date()
+    fs.writeFileSync('./wikipedia_world_population.json', JSON.stringify({
+      result: res,
+      last_update: now.toGMTString()
+    }))
   })
